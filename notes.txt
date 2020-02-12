@@ -1,0 +1,39 @@
+create table Donor (
+	DonorID int,
+	Name varchar(30),
+	Age varchar(30),
+	BloodGroup varchar(5),
+	Mobile varchar(15),
+	Address varchar(30),
+	City varchar(30)
+	);
+
+insert into donor (DonorID, Name, Age, BloodGroup, Mobile, Address, City)
+values (10001, "Sajjad", 21, "O+", "01755367448", "SRJ, JU", "Dhaka");
+
+
+/**
+
+<html>
+
+<body>
+
+<?php
+
+$username = "root";
+$password = "";
+$hostname = "localhost";
+
+$dbhandle = mysqli_connect($hostname , $username)
+    or die("Unable to connect to MySQL");
+echo "->  Connected to MySQL<br>";
+
+mysqli_close($dbhandle);
+
+?>
+
+</body>
+</html> 
+
+
+**/
