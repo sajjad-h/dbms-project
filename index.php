@@ -109,7 +109,7 @@ $result = $stmt->get_result();
 $stmt->close();
 
 if (mysqli_num_rows($result) > 0) {
-	echo "<p align='center' style='font-size:18'> Total " . mysqli_num_rows($result) . " persons </p>";
+	echo "<p align='center' style='font-size:18'> Total <b>" . mysqli_num_rows($result) . "</b> persons available for <b>'" . $b_type . "'</b> Blood Group</p>";
 	
 	echo "<table border = '2' align = 'center'>";
 
@@ -143,7 +143,7 @@ if (mysqli_num_rows($result) > 0) {
 	echo "</table>";
 }
 else {
-	echo "<p align='center' style='font-size:18'> No persons </p>";
+	echo "<p align='center' style='font-size:18'> <b>NO</b> person available for <b>'" . $b_type . "'</b> Blood Group</p>";
 }
 
 
