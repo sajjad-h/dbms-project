@@ -7,6 +7,19 @@
 <body>
 	<h1 align="center"> Welcome to Blood Bank Management System! </h1>
 	<p align='center'> <a href="addDonor.html"> Add Donor </a> </p>
+
+	<?php
+		if (isset($_POST['filter_order_type'])) {
+			$entry_order_type = $_POST['filter_order_type'];
+		}
+		else {
+			$entry_order_type = "ALL";
+		}
+
+
+	?>
+
+
 	
 	<form action="#" method="post">
 	
@@ -15,31 +28,20 @@
 	<tr> 
 		<td> BloodGroup: </td> 
 		<td> 
-			<select name="blood">
-			<option value="ALL" selected> ALL </option>
-			<option value="Apos"> A+ </option>
-			<option value="Aneg"> A- </option>
-			<option value="Bpos"> B+ </option>
-			<option value="Bneg"> B- </option>
-			<option value="Opos"> O+ </option>
-			<option value="Oneg"> O- </option>
-			<option value="ABpos"> AB+ </option>
-			<option value="ABneg"> AB- </option>
+			<select name="filter_order_type" id="input-order-type">
+				<option value="ALL" <?php if($entry_order_type=="ALL") { echo "selected"; } ?> > ALL </option>
+				<option value="A+" <?php if($entry_order_type=="A+")   { echo "selected"; } ?> > A+ </option>
+				<option value="A-" <?php if($entry_order_type=="A-")   { echo "selected"; } ?> > A- </option>
+				<option value="B+" <?php if($entry_order_type=="B+")   { echo "selected"; } ?> > B+ </option>
+				<option value="B-" <?php if($entry_order_type=="B-")   { echo "selected"; } ?> > B- </option>
+				<option value="O+" <?php if($entry_order_type=="O+")   { echo "selected"; } ?> > O+ </option>
+				<option value="O-" <?php if($entry_order_type=="O-")   { echo "selected"; } ?> > O- </option>
+				<option value="AB+" <?php if($entry_order_type=="AB+") { echo "selected"; } ?> > AB+ </option>
+				<option value="AB-" <?php if($entry_order_type=="AB-") { echo "selected"; } ?> > AB- </option>
 			</select>
 		</td>
 		
 		<td> <input type="submit" name="submit" value="Select"> </td>
-		
-		<?php
-		if(isset($_POST['submit'])){
-			$selected_val = $_POST['blood'];  // Storing Selected Value In Variable
-			echo "You have selected :" .$selected_val;  // Displaying Selected Value
-			$url = "Location: index.php?b_type=" . $_POST['blood'];
-			header($url);
-			#header( "Location: index.php" );
-			exit ;
-		}
-		?>
 		
 	</tr>
 	
@@ -65,36 +67,7 @@ if (!$con) {
 }
 # echo " >>> Connected successfully! <br>";
 
-$_GET['b_type'] = (isset($_GET['b_type']) ? $_GET['b_type'] : '');
-
-switch ($_GET['b_type']) {
-	case "Opos":
-		$b_type = "O+";
-		break;
-	case "Oneg":
-		$b_type = "O-";
-		break;
-	case "Apos":
-		$b_type = "A+";
-		break;
-	case "Aneg":
-		$b_type = "A-";
-		break;
-	case "Bpos":
-		$b_type = "B+";
-		break;
-	case "Bneg":
-		$b_type = "B-";
-		break;
-	case "ABpos":
-		$b_type = "AB+";
-		break;
-	case "ABneg":
-		$b_type = "AB-";
-		break;
-	default:
-		$b_type = "ALL";
-}
+$b_type = isset($_POST['filter_order_type']) ? $_POST['filter_order_type'] : "ALL";
 
 if ($b_type == "ALL") {
 	$stmt = $con->prepare("select * from donor order by DonorID");
