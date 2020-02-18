@@ -1,5 +1,5 @@
 create table Donor (
-	DonorID int,
+	DonorID int AUTO_INCREMENT,
 	Name varchar(30),
 	Age varchar(30),
 	BloodGroup varchar(5),
