@@ -9,6 +9,7 @@
 <body>
 	<h1 align="center"> Welcome to Blood Bank Management System! </h1>
 	<p align='center'> <a href="addDonor.html"> Add Donor </a> </p>
+	<p align='center'> <a href="statistics.php"> Statistics </a> </p>
 
 	<?php
 		if (isset($_POST['filter_order_type'])) {
