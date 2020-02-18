@@ -22,8 +22,6 @@
 
 	?>
 
-
-	
 	<form action="#" method="post">
 	
 	<table align="center"> 
@@ -45,6 +43,7 @@
 		</td>
 		
 		<td> <input type="submit" name="submit" value="Select"> </td>
+		<td> <input type="submit" name="refresh" value="Refresh"> </td>
 		
 	</tr>
 	
@@ -57,6 +56,11 @@
 </html>
 
 <?php
+
+if (isset($_POST['refresh'])) {
+	header("Location: index.php");
+	exit();
+}
 
 $b_type = isset($_POST['filter_order_type']) ? $_POST['filter_order_type'] : "ALL";
 
