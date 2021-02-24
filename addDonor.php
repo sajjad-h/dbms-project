@@ -2,8 +2,8 @@
 
 $servername = "localhost";
 $username = "root";
-$password = "";
-$dbname = "project";
+$password = "hello";
+$dbname = "dbms";
 
 $name = (isset($_POST['name']) ? $_POST['name'] : '');
 $age = (isset($_POST['age']) ? $_POST['age'] : '');
@@ -68,5 +68,3 @@ if (mysqli_num_rows($result) > 0) {
 }
 
 echo "</table>";
-
-?>
